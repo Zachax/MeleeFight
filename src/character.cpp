@@ -1,9 +1,10 @@
 #include <string>
 #include "character.h"
 
-Character::Character(string name, int hp) {
+Character::Character(string name, int hp, int isPlayer) {
     this->hitPoints = hp;
     this->name = name;
+    this->isPlayer = isPlayer;
 }
 
 // Returns remaining hitpoints, so the return value can be directly printed out.
@@ -27,4 +28,9 @@ string Character::getName() {
 
 Weapon Character::getWeapon() {
     return weapon;
+}
+
+// 0 means enemy character
+int Character::getIsPlayer() {
+    return isPlayer;
 }

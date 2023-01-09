@@ -1,12 +1,13 @@
 #include <iostream>
-#include "battlefield.h"
+#include <string>
+#include "ui.h"
 
 using namespace std;
 
 int main() {
-    Character player("Player", 20);
-    Character enemy("Enemy", 15);
-    Character enemy2("Enemy2", 13);
+    Character player("Player", 20, 1);
+    Character enemy("Enemy", 15, 0);
+    Character enemy2("Enemy2", 13, 0);
 
     Weapon playerWeapon("Nasty Saber", 8, eOneHandedSword);
     player.setWeapon(playerWeapon);
@@ -16,11 +17,8 @@ int main() {
     field.addCombatant(enemy);
     field.addCombatant(enemy2);
 
-    vector<Character> people = field.getCombatants();
-    cout << "Warriors on the battlefield:" << endl;
-    for (int i = 0; i < people.size(); i++) {
-        Character warrior = people.at(i);
-        cout << warrior.getName() << " equipped with " << warrior.getWeapon().getName() << endl;
-    }
+    Ui ui;
+    ui.runBattlefield(field);
+    
     return 0;
 }

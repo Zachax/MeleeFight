@@ -1,9 +1,9 @@
 #include "weapon.h"
 
 Weapon::Weapon() {
-    this-> name = "Fists";
-    this->damage = 1;
-    this->type = eUnarmed;
+    name = "Fists";
+    damage = 1;
+    type = eUnarmed;
 }
 
 Weapon::Weapon(string name, int damage, weaponType type) {
@@ -13,11 +13,11 @@ Weapon::Weapon(string name, int damage, weaponType type) {
 }
 
 int Weapon::getDamage() {
-    return this->damage;
+    return damage;
 }
 
 weaponType Weapon::getType() {
-    return this->type;
+    return type;
 }
 
 string Weapon::getName() {

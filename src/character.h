@@ -15,7 +15,7 @@ using namespace std;
 class Character {
 private:
     string name = "Unnamed";
-    int hitPoints;
+    int hitPoints, isPlayer;
     Weapon weapon;
 public:
     int causeDamage(int);
@@ -23,5 +23,6 @@ public:
     int attackDamage();
     string getName();
     Weapon getWeapon();
-    Character(string name, int hp);
+    int getIsPlayer();
+    Character(string name, int hp, int isPlayer);
 };
