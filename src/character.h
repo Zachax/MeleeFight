@@ -5,6 +5,9 @@ Created by: Sakari Eskelinen
 
 Changelog:
 7.1.2023 Class created
+10.1.2023 Added isOperational method and some getters.
+
+(All little changes are not necessarily booked up.)
 */
 
 #include <string>
@@ -24,5 +27,7 @@ public:
     string getName();
     Weapon getWeapon();
     int getIsPlayer();
+    int getHitPoints();
+    int isOperational();
     Character(string name, int hp, int isPlayer);
 };

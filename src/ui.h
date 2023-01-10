@@ -5,6 +5,9 @@ Created by: Sakari Eskelinen
 
 Changelog:
 9.1.2023 Class created
+10.1.2023 Implemented possibility to attack and to defeat enemies
+
+(All little changes are not necessarily booked up.)
 */
 
 #include <iostream>
@@ -21,9 +24,10 @@ private:
     int gameRunning;
     void showActions();
     int inputAction();
-    void performAction(int action);
+    void performAction(int action, Battlefield*);
+    void attack(Battlefield*);
 public:
-    void runBattlefield(Battlefield);
+    void runBattlefield(Battlefield*);
     void showWarriors(Battlefield);
     void setGameRunning(int);
     int getGameRunning();

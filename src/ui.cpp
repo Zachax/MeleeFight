@@ -13,16 +13,16 @@ void Ui::showWarriors(Battlefield field) {
 }
 
 // Starts the game and its main loop
-void Ui::runBattlefield(Battlefield field) {
+void Ui::runBattlefield(Battlefield *field) {
     cout << "Warriors on the battlefield:" << endl;
     if (!getGameRunning()) {
         setGameRunning(1);
     }
     while(getGameRunning()) {
-        showWarriors(field);
+        showWarriors(*field);
         showActions();
         int command = inputAction();
-        performAction(command);
+        performAction(command, field);
     }
 }
 
@@ -40,7 +40,8 @@ int Ui::getGameRunning() {
 void Ui::showActions() {
     cout << "Input action:" << endl;
     for (int i = 0; i < sizeof(actions)/sizeof(actions[0]) ; i++) {
-        cout << i << " " << actions[i] << endl;
+        // Note: index value is added one because action list starting from zero is just annyoing in human UI
+        cout << i+1 << " " << actions[i] << endl;
     }
 }
 
@@ -48,16 +49,17 @@ void Ui::showActions() {
 int Ui::inputAction() {
     int command;
     cin >> command;
-    return command;
+    return --command; // Action index value shown to player is one off, see Ui::showActions()
 }
 
 // Do the actual action given by ID
 // Matching ID name with index
-void Ui::performAction(int action) {
+void Ui::performAction(int action, Battlefield *field) {
     string actionMatched = actions[action];
     cout << "You have decided to: ";
     if (actionMatched == ATTACK) {
         cout << ATTACK << endl;
+        attack(field);
     } else if (actionMatched == DEFEND) {
         cout << DEFEND << endl;
     } else if (actionMatched == QUIT) {
@@ -70,4 +72,20 @@ void Ui::performAction(int action) {
 
 void Ui::endGame() {
     exit(0);
+}
+
+void Ui::attack(Battlefield *field) {
+    Character *enemy = field->getNextEnemy();
+    if (enemy != NULL) {
+        Character *player = field->getPlayer();
+        int damage = player->attackDamage();
+        int hitPointsRemaining = enemy->causeDamage(damage);
+        cout << "Attacking " << enemy->getName() << " with " << player->getWeapon().getName() << "!" << endl;
+        cout << "Caused " << damage << " damage. Enemy has " << hitPointsRemaining << " health remaining." << endl;
+        if (hitPointsRemaining < 0) {
+            cout << enemy->getName() << " drops dead!" << endl;
+        }
+    } else {
+        cout << "There are no more enemies standing to attack against!" << endl;
+    }
 }
