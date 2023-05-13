@@ -14,7 +14,7 @@ void Battlefield::addCombatant(Character combatant) {
 
 // Seeks and returns the first operational enemy Character from the battlefield
 Character* Battlefield::getNextEnemy() {
-    Character *nextEnemy;
+    Character *nextEnemy = 0;
     int index = 0;
     do {
         nextEnemy = &combatants.at(index);
@@ -33,7 +33,7 @@ Character* Battlefield::getNextEnemy() {
 
 // Seeks and returns the first player Character from the battlefield
 Character* Battlefield::getPlayer() {
-    Character *player;
+    Character *player = 0;
     int index = 0;
     do {
         player = &combatants.at(index);

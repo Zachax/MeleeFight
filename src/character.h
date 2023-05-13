@@ -5,7 +5,7 @@ Created by: Sakari Eskelinen
 
 Changelog:
 7.1.2023 Class created
-10.1.2023 Added isOperational method and some getters.
+10.1.2023 Added isOperational method and some getters. 
 
 (All little changes are not necessarily booked up.)
 */

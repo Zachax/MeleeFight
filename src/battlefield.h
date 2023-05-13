@@ -5,7 +5,7 @@ Created by: Sakari Eskelinen
 
 Changelog (all little changes not necessarily booked up):
 7.1.2023 Class created
-10.1.2023 Added getNextEnemy and getPlayer methods.
+10.1.2023 Added getNextEnemy and getPlayer methods. 
 */
 
 #include <vector>

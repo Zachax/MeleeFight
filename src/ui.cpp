@@ -1,5 +1,25 @@
 #include "ui.h"
 
+// Checks if all enemies are down
+bool Ui::enemiesRemaining(Battlefield field) {
+    bool enemiesRemaining = false; // flag for whether anyone is still operational
+    vector<Character> people = field.getCombatants();
+    for (int i = 0; i < people.size(); i++) {
+        Character warrior = people.at(i);
+        if (warrior.getIsPlayer()) {
+            continue;
+        } else {
+            // If even a single enemy remains, there is still action
+            if (warrior.getHitPoints() > 0) {
+                enemiesRemaining = true;
+                break;
+            } 
+        }
+    }
+    return enemiesRemaining;
+}
+
+// Prints enemies on the field
 void Ui::showWarriors(Battlefield field) {
     vector<Character> people = field.getCombatants();
     for (int i = 0; i < people.size(); i++) {
@@ -7,7 +27,11 @@ void Ui::showWarriors(Battlefield field) {
         if (warrior.getIsPlayer()) {
             cout << "You, " << warrior.getName() << ", equipped with " << warrior.getWeapon().getName() << endl;
         } else {
-            cout << "Enemy warrior, " << warrior.getName() << ", equipped with " << warrior.getWeapon().getName() << endl;
+            if (warrior.getHitPoints() > 0) {
+                cout << "Enemy warrior, " << warrior.getName() << ", equipped with " << warrior.getWeapon().getName() << endl;
+            } else {
+                cout << "Downed enemy, " << warrior.getName() << endl;
+            }
         }
     }
 }
@@ -20,9 +44,14 @@ void Ui::runBattlefield(Battlefield *field) {
     }
     while(getGameRunning()) {
         showWarriors(*field);
-        showActions();
-        int command = inputAction();
-        performAction(command, field);
+        if (enemiesRemaining(*field)) {
+            showActions();
+            int command = inputAction();
+            performAction(command, field);
+        } else {
+            cout << "All enemies are down!" << endl;
+            setGameRunning(0);
+        }
     }
 }
 

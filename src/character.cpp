@@ -10,7 +10,6 @@ Character::Character(string name, int hp, int isPlayer) {
 // Returns remaining hitpoints, so the return value can be directly printed out.
 int Character::causeDamage(int damage) { 
     hitPoints -= damage;
-    cout << this->hitPoints << " <- debug value" << endl;
     return hitPoints;
 }
 

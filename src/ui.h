@@ -6,6 +6,7 @@ Created by: Sakari Eskelinen
 Changelog:
 9.1.2023 Class created
 10.1.2023 Implemented possibility to attack and to defeat enemies
+14.5.2023 Enemies with < 1 hit points are not shown as active. The game ends when all enemies are down.
 
 (All little changes are not necessarily booked up.)
 */
@@ -27,6 +28,7 @@ private:
     void performAction(int action, Battlefield*);
     void attack(Battlefield*);
 public:
+    bool enemiesRemaining(Battlefield);
     void runBattlefield(Battlefield*);
     void showWarriors(Battlefield);
     void setGameRunning(int);
