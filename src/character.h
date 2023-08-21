@@ -5,7 +5,8 @@ Created by: Sakari Eskelinen
 
 Changelog:
 7.1.2023 Class created
-10.1.2023 Added isOperational method and some getters. 
+10.1.2023 Added isOperational method and some getters.
+21.8.2023 Added maxHitPoints. Added skill.
 
 (All little changes are not necessarily booked up.)
 */
@@ -18,8 +19,9 @@ using namespace std;
 class Character {
 private:
     string name = "Unnamed";
-    int hitPoints, isPlayer;
+    int hitPoints, maxHitPoints, isPlayer;
     Weapon weapon;
+    double skill;
 public:
     int causeDamage(int);
     void setWeapon(Weapon);
@@ -28,6 +30,8 @@ public:
     Weapon getWeapon();
     int getIsPlayer();
     int getHitPoints();
+    int getMaxHitPoints();
     int isOperational();
-    Character(string name, int hp, int isPlayer);
+    float getSkill();
+    Character(string name, int hp, int isPlayer, float skill);
 };

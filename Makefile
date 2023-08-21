@@ -11,7 +11,7 @@ $(TARGET): $(OBJECTS)
 obj/main.o: src/main.cpp obj/ui.o obj/battlefield.o obj/character.o obj/weapon.o
 	$(CC) -c src/main.cpp -o obj/main.o
 
-obj/ui.o: src/ui.h src/battlefield.o
+obj/ui.o: src/ui.h obj/battlefield.o
 	$(CC) -c src/ui.cpp -o obj/ui.o
 
 obj/battlefield.o: src/battlefield.h obj/character.o

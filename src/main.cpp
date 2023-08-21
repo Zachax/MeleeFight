@@ -5,11 +5,12 @@
 using namespace std;
 
 int main() {
-    Character player("Player", 20, 1);
-    Character enemy("Chicken", 10, 0);
-    Character enemy2("Dinosaur", 130, 0);
+    // Reminder: a Character is defined by: name, hp, isPlayer, skill
+    Character player("Player", 20, 1, 75);
+    Character enemy("Chicken", 10, 0, 10);
+    Character enemy2("Dinosaur", 130, 0, 85);
 
-    Weapon playerWeapon("Nasty Saber", 8, eOneHandedSword);
+    Weapon playerWeapon("Nasty Saber", 7, eOneHandedSword);
     player.setWeapon(playerWeapon);
 
     Battlefield field;

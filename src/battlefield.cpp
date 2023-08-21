@@ -1,7 +1,7 @@
 #include "battlefield.h"
 
 Battlefield::Battlefield() {
-
+    // Hmm... To be done?
 }
 
 vector<Character> Battlefield::getCombatants() {
